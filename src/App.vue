@@ -1,16 +1,12 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
+import Counter from './components/Counter.vue';
 </script>
 
 <template>
-  <header>
 
-    <div class="wrapper">
-      <nav>
-        <RouterLink class="text-3x1 font-bold hover:text-blue-500" to="/">Home</RouterLink>
-        <RouterLink class="text-3x1 font-bold hover:text-blue-500" to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
+  <main class="flex justify-center items-center min-h-screen bg-gray-200">
+    <Counter />
+  </main>
 
 </template>
