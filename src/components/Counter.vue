@@ -10,7 +10,10 @@ import {ref} from 'vue'
 const count = ref<numbe>(0);
 
 // Funcion para incrementar
+// La funcion flecha es aplicable en este caso por el proceso sencillo que debe ejecutar y que necesita de this
 const increment = () => {
+  // El .value se utiliza porque ref devuelve un objeti reactivo con una propiedad value
+  // Si en su lugar pusieramos count++ estariamos afectando al objeto y no a su valor interno
   count.value++;
 }
 
