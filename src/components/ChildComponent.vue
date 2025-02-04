@@ -11,7 +11,7 @@ const emit = defineEmits<{
 }>();
 
 // Esta constante utiliza la creacion de la estrutura del defineEmit y pasa el evento junto con un valor
-const evniarEvento = () => {
+const enviarEvento = () => {
   emit("eventoClick", "Mensaje del hijo!")
 }
 </script>
@@ -19,7 +19,7 @@ const evniarEvento = () => {
 <template>
   <div class="p-4 bg-yellow-200 rounded shadow">
     <p class="text-lg">{{ mensaje }}</p>
-    <button @click="evniarEvento" class="mt-3 px-4 py-2 bg-yellow-500 text-white rounded-md">
+    <button @click="enviarEvento" class="mt-3 px-4 py-2 bg-yellow-500 text-white rounded-md">
       Enviar la padre
     </button>
   </div>

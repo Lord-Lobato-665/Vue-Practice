@@ -1,12 +1,23 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
+// Importacion de pinia
+import { defineStore } from "pinia";
 
-export const useCounterStore = defineStore('counter', () => {
-  const count = ref(0)
-  const doubleCount = computed(() => count.value * 2)
-  function increment() {
-    count.value++
-  }
-
-  return { count, doubleCount, increment }
-})
+// Creacion del store global a la que podran acceder los componentes que la implementen
+// useCounterStore es el nombre de la funcion y "counter" es el nombre que se le asigna al store para acceder a el
+export const useCounterStore = defineStore( "counter",{
+  // State define los valores reactivos del store
+  state: () => ({
+    count: 0,
+  }),
+  // Action define los metodos que modifican el state del store
+  actions: {
+    increment () {
+      this.count++;
+    },
+    decrement () {
+      this.count--;
+    },
+    reset () {
+      this.count = 0;
+    }
+  },
+});
