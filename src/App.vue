@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import Counter from './components/Counter.vue';
-import TodoList from './components/TodoList.vue';
-import ParentComponent from './components/ParentComponent.vue';
-import PiniaComponent from './components/PiniaComponent.vue';
+import Sidebar from '@/components/Sidebar.vue';
 </script>
 
 <template>
+  <div class="flex">
+    <!-- Sidebar fijo a la izquierda -->
+    <Sidebar />
 
-  <main class="flex justify-center items-center min-h-screen bg-gray-200">
-    <PiniaComponent />
-  </main>
-
+    <!-- Contenido principal -->
+    <main class="flex-1 p-4">
+      <RouterView />
+    </main>
+  </div>
 </template>
