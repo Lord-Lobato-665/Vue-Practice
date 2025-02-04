@@ -7,7 +7,7 @@ import {ref} from 'vue'
 
 // Estado reativo
 // Permite que cualquier cambio que se le haga a count se actualice de forma automatica en la UI
-const count = ref<numbe>(0);
+const count = ref<number>(0);
 
 // Funcion para incrementar
 // La funcion flecha es aplicable en este caso por el proceso sencillo que debe ejecutar y que necesita de this
