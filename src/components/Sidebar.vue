@@ -10,6 +10,7 @@ import { RouterLink } from 'vue-router';
       <RouterLink to="/todo" class="block px-4 py-2 rounded hover:bg-gray-700">Lista de Tareas</RouterLink>
       <RouterLink to="/parent" class="block px-4 py-2 rounded hover:bg-gray-700">Props Padre-Hijo</RouterLink>
       <RouterLink to="/pinia" class="block px-4 py-2 rounded hover:bg-gray-700">Pinia Store</RouterLink>
+      <RouterLink to="/tailwind" class="block px-4 py-2 rounded hover:bg-gray-700">Tailwind Practice</RouterLink>
     </nav>
   </aside>
 </template>
