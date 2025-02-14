@@ -1,0 +1,37 @@
+Como base para iniciar un buen proyecto siempre hay que analizar a detalle los requerimientos del mismo, en este caso vamos a crear un TaskList que le da a los usuarios la posibilidad de
+realizar las siguientes acciones basicas
+
+- Crear notas
+- Editar notas
+- Eliminar notas
+- Asignacion de etiquetas durante las creacion de notas
+- Filtrado de notas a base de las etiquetas
+
+Las notas deben poseer las siguientes caracteristicas para poder ser creadas
+
+- Un titulo principal para la notas
+- Registro de fecha de inicio y fecha de fin
+- Asignacion de una o varias etiquetas
+- Una descripcion o contenido de la notas
+
+La apliacion debe contener las siguientes caracteristicas
+
+- Edicion y eliminacion de las notas, las cuales persisten gracias al local storage
+- Visualizacion de todas las notas en forma de lista y con un filtro de ordenamiento Reciente-Antiguo
+- Filtrado de notas a base de las etiquetas
+- Funcion de limpiado de todas las notas y lipiado de notas por tipo de etiqueta
+
+Restrincciones y caracteristicas
+
+- Utilizar solamente composition API (ref, reactive, computed)
+- Utilizar Pinia para gestionar el estado global
+- Utilizar Slots para pasar estructuras de codigo
+- Utilizar Props para los componentes
+- Utilizardatos computados para mostrar
+    -- Total de notas
+    -- Total de notas por categoria
+- Utilizar almenos un ciclo de vida del componente (Hooks)
+
+Persistencia
+
+- Guardar las notas en el local storage para mantener la informacion tras recargar la pagina (Utilizando watch para sincronizacion)

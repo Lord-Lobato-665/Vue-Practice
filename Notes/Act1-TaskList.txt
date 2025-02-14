@@ -1,0 +1,35 @@
+Para la creacion de mi TaskList comanzamos definiendo una arquitectura para darle forma las partes que conforma la apliacion (componentes y Stores)
+
+Estructura de archivos
+
+src/
+    components/
+            NoteForm.vue - Formulario para agregar y editar notas
+            NoteList.vue - Lista de notas
+            NoteItem.vue - Cada nota individual
+        stores/
+            notes.ts
+        interfaces/
+            notes.ts (tiene valores fijos para las etiquetas: personal, trabajo, urgente, utliza UUID)
+
+Explicacion de la arquitectura
+
+- Componentes
+    NoteForm.vue - Permite crear o editar una nota. Utiliza props para recibir datos (En caso de edicion) y emits para comunicar eventos del padre
+    NoteList.vue - Muestra todas las notas, aplicando un filtro por etiquetas y ordenandolas de la mas reciente a la mas antigua
+    NoteItem.vue - Representa una unica nota. Utiliza un slot para permitir personalizar las forma en que se muestran las etiquetas
+
+- Store (Pinia)
+    notes.ts - Contiene la logica de gestion de las notas (agregar, editar, eliminar, filtrar y limpiar) y se encarga de las persistencia en el localStorega usando un watch para sincronizar cambios
+- Tailwind CSS
+    Aplicamos estilizacion rapida y eficaz con tailwind
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+1. Configuracion inicial del proyecto
+
+    main.ts - Este archivo conecta la aplicacion, la conecta con Pinia y cargar el CSS de Tailwind
+
+2. Creacion de Store de Notas con Pinia
+
+    El Store se encargara de mantenerla lista de notas, incluir acciones para agregar, editar, eliminar y limpiar notas, y tambien persisten los datos en el localStorage

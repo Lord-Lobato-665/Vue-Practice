@@ -10,6 +10,6 @@ import Sidebar from '@/components/Sidebar.vue';
     <!-- Contenido principal -->
     <main class="flex-1 p-4">
       <RouterView />
-    </main>
+    </main> 
   </div>
 </template>
