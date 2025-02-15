@@ -4,7 +4,7 @@
     <textarea v-model="noteData.content" placeholder="Contenido" class="w-full bg-gray-200 text-gray-900 border-0 rounded-md p-2 mb-4 focus:bg-gray-200 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150" required></textarea>
 
     <!-- Checkboxes para seleccionar múltiples etiquetas -->
-    <div class="flex flex-wrap gap-2 mb-4">
+    <div class="flex flex-wrap gap-2 mb-4 h-20 overflow-y-auto">
       <label v-for="tag in availableTags" :key="tag" class="flex items-center space-x-2">
         <input type="checkbox" v-model="noteData.tags" :value="tag" class="form-checkbox h-5 w-5 text-blue-600" />
         <span>{{ tag }}</span>
@@ -22,7 +22,8 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, ref, watch } from "vue";
+import { defineProps, defineEmits, ref, watch, computed } from "vue";
+import { useNotesStore } from "@/stores/notes";
 import type { Note } from "@/Interfaces/notes";
 
 const props = defineProps<{
@@ -32,8 +33,14 @@ const props = defineProps<{
 
 const emit = defineEmits(["submit"]);
 
-// Etiquetas disponibles
-const availableTags = ["personal", "trabajo", "urgente"];
+const store = useNotesStore();
+const customTags = computed(() => store.customTags);
+
+// Combinar etiquetas predeterminadas y personalizadas
+const availableTags = computed(() => {
+  const customTagNames = customTags.value.map(tag => tag.name);
+  return customTagNames;
+});
 
 const noteData = ref<Omit<Note, "id" | "date">>({
   title: "",

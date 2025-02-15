@@ -17,10 +17,14 @@ export const useNotesStore = defineStore("notes", () => {
     notes.value.push(newNote);
   };
 
-  const updateNote = (id: string, updatedNote: Omit<Note, "id">) => {
-    notes.value = notes.value.map((note) =>
-      note.id === id ? { ...note, ...updatedNote } : note
-    );
+  const updateNote = (id: string, updatedNote: Omit<Note, "id" | "date">) => {
+    const index = notes.value.findIndex((note) => note.id === id);
+    if (index !== -1) {
+      notes.value[index] = {
+        ...notes.value[index],
+        ...updatedNote,
+      };
+    }
   };
 
   const deleteNote = (id: string) => {
@@ -40,6 +44,20 @@ export const useNotesStore = defineStore("notes", () => {
     customTags.value.push(tag);
   };
 
+  const updateCustomTag = (oldName: string, updatedTag: CustomTag) => {
+    // Actualizar la etiqueta en customTags
+    const index = customTags.value.findIndex((tag) => tag.name === oldName);
+    if (index !== -1) {
+      customTags.value[index] = updatedTag;
+    }
+
+    // Actualizar las etiquetas en las notas
+    notes.value = notes.value.map((note) => ({
+      ...note,
+      tags: note.tags.map((tag) => (tag === oldName ? updatedTag.name : tag)),
+    }));
+  };
+
   const deleteCustomTag = (tagName: string) => {
     customTags.value = customTags.value.filter((tag) => tag.name !== tagName);
   };
@@ -54,6 +72,14 @@ export const useNotesStore = defineStore("notes", () => {
     { deep: true }
   );
 
+  // src/stores/notes.ts
+const toggleNoteCompletion = (id: string) => {
+  const index = notes.value.findIndex((note) => note.id === id)
+  if (index !== -1) {
+    notes.value[index].completed = !notes.value[index].completed
+  }
+}
+
   return {
     notes,
     customTags,
@@ -63,6 +89,8 @@ export const useNotesStore = defineStore("notes", () => {
     deleteAllNotes,
     deleteNotesByTag,
     addCustomTag,
+    updateCustomTag,
     deleteCustomTag,
+    toggleNoteCompletion
   };
 });
