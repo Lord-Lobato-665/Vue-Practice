@@ -4,12 +4,10 @@ import Sidebar from '@/components/Sidebar.vue';
 
 <template>
   <div class="flex">
-    <!-- Sidebar fijo a la izquierda -->
-    <Sidebar />
 
     <!-- Contenido principal -->
-    <main class="flex-1 p-4">
+    <main class="flex-1">
       <RouterView />
-    </main> 
+    </main>
   </div>
 </template>

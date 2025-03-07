@@ -1,3 +1,25 @@
+<script setup lang="ts">
+import { computed, onMounted } from 'vue';
+import { useAuthStore } from '@/stores/authStore';
+import { useRouter } from 'vue-router';
+
+// Usamos useAuthStore para verificar el estado de la sesión
+const authStore = useAuthStore();
+const router = useRouter();
+
+// Computed para verificar si el usuario está autenticado
+const isAuthenticated = computed(() => authStore.isAuthenticated);
+
+// Redirigir al usuario según su estado de sesión cuando la página 404 se monta
+onMounted(() => {
+  if (isAuthenticated.value) {
+    router.push('/dashboard');
+  } else {
+    router.push('/login');
+  }
+});
+</script>
+
 <template>
   <div class="flex flex-col items-center justify-center h-screen text-center">
     <h1 class="text-6xl font-bold text-orange-500">404</h1>
